@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE taglib
+        PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+        "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<taglib>
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>1.2</jsp-version>
+    <short-name>albumList</short-name>
+    <display-name>albumList</display-name>
+    <description>List all albums of a user
+    </description>
+    <tag>
+        <name>albumList</name>
+        <tag-class>com.raysmond.album.UserAlbumSelectList</tag-class>
+        <body-content>empty</body-content>
+        <small-icon></small-icon>
+        <large-icon></large-icon>
+        <description></description>
+        <attribute> 
+        	<name>userId</name>
+        	<required>true</required>
+        	<rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute> 
+        	<name>selectId</name>
+        	<required>true</required>
+        	<rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <example></example>      
+    </tag>
+</taglib>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="RPhoto"
+  id="myeclipse.1369210485566"
+  context-root="/RPhoto"
+  j2ee-spec="6.0"
+  archive="RPhoto.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
