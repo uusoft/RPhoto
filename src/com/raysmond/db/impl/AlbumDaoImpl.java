@@ -257,8 +257,8 @@ public class AlbumDaoImpl implements AlbumDao{
 	 */
 	@Override
 	public List<Album> getPublicAlbums(int page, int pageSize) {
-		int begin = page * pageSize + 1;
-		int end = begin + pageSize -1;
+		int begin = page * pageSize;
+		int end = begin + pageSize;
 		List<Album> albums = new ArrayList<Album>();
 		try {
 			db=new Database();

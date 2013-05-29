@@ -13,4 +13,5 @@ public interface PhotoDao extends BaseDao{
 	public boolean removeComment(Photo photo,Comment comment);
 	public List<Photo> getPhotoInAlbum(int albumId);
 	public Photo getPhotoById(int photoId);
+	public boolean deletePhotosInAlbum(int albumId);
 }

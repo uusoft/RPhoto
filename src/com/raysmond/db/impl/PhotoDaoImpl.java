@@ -86,7 +86,7 @@ public class PhotoDaoImpl implements PhotoDao{
 			db=new Database();
 			connect=db.getConnection();
 			PreparedStatement ps = connect.prepareStatement(
-					"DELETE FROM photo WHERE pid=?)");
+					"DELETE FROM photo WHERE pid=?");
 			ps.setInt(1, photo.getPid());
 			result = ps.executeUpdate();
 			ps.close();
@@ -196,6 +196,27 @@ public class PhotoDaoImpl implements PhotoDao{
 			e.printStackTrace();
 		}
 		return photo;
+	}
+
+	@Override
+	public boolean deletePhotosInAlbum(int albumId) {
+		int result = 0;
+		try {
+			db=new Database();
+			connect=db.getConnection();
+			PreparedStatement ps = connect.prepareStatement(
+					"DELETE FROM photo WHERE album_aid=?");
+			ps.setInt(1, albumId);
+			result = ps.executeUpdate();
+			ps.close();
+			db.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if(result==0) return false;
+		return true;
 	}
 
 }

@@ -66,11 +66,11 @@
 		});
 		
 		function goBackToAlbum(_aid){
-            	alert(_aid);
+            	//alert(_aid);
             	if(_aid=="default"){
             		alert("default");
             	}
-            	//window.location.href="pictures.jsp?album="+_aid;
+            	window.location.href="<%=path%>/pictures.jsp?album="+_aid;
             }; 
 	</script>
   </head>

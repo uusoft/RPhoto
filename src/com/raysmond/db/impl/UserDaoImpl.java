@@ -88,7 +88,7 @@ public class UserDaoImpl implements UserDao{
 			db=new Database();
 			connect=db.getConnection();
 			PreparedStatement ps = connect.prepareStatement(
-					"DELETE FROM user WHERE user.uid=?)");
+					"DELETE FROM user WHERE user.uid=?");
 			ps.setInt(1, user.getUid());
 			result = ps.executeUpdate();
 			ps.close();
@@ -175,6 +175,41 @@ public class UserDaoImpl implements UserDao{
 		return users;
 	}
 
+	@Override
+	public List<User> getUsers(int page, int pageSize) {
+		int begin = page * pageSize;
+		int end = begin + pageSize;
+		List<User> users = new ArrayList<User>();
+		try {
+			db=new Database();
+			connect=db.getConnection();
+			PreparedStatement ps = connect.prepareStatement(
+					"SELECT * FROM user LIMIT ?,?");
+			ps.setInt(1, begin);
+			ps.setInt(2, end);
+			ResultSet result = ps.executeQuery();
+			while(result.next()){
+				User user = new User();
+				user.setUid(result.getInt(1));
+				user.setName(result.getString(2));
+				user.setPassword(result.getString(3));
+				user.setMail(result.getString(4));
+				user.setStatus(result.getInt(5));
+				user.setCreateTime(result.getDate(6));
+				user.setLastLoginTime(result.getDate(7));
+				user.setRid(result.getInt(8));
+				user.setPicture(result.getString(9));
+				users.add(user);
+			}
+			ps.close();
+			db.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return users;
+	}
 	
 	public static void main(String args[]){
 		/*UserDao dao = new UserDaoImpl();
@@ -193,4 +228,38 @@ public class UserDaoImpl implements UserDao{
 		List<User> users = dao.find("name","Raysmond");
 		System.out.println(users.size());
 	}
+
+	@Override
+	public User getUserById(int uid) {
+		User user = null;
+		try {
+			db=new Database();
+			connect=db.getConnection();
+			PreparedStatement ps = connect.prepareStatement(
+					"SELECT * FROM user WHERE uid=?");
+			ps.setInt(1, uid);
+			ResultSet result = ps.executeQuery();
+			while(result.next()){
+				user = new User();
+				user.setUid(result.getInt(1));
+				user.setName(result.getString(2));
+				user.setPassword(result.getString(3));
+				user.setMail(result.getString(4));
+				user.setStatus(result.getInt(5));
+				user.setCreateTime(result.getDate(6));
+				user.setLastLoginTime(result.getDate(7));
+				user.setRid(result.getInt(8));
+				user.setPicture(result.getString(9));
+			}
+			ps.close();
+			db.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return user;
+	}
+
+	
 }

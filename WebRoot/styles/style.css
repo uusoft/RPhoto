@@ -8,7 +8,10 @@ font-family: "Microsoft Yahei","Î¢ÈíÑÅºÚ",Arial,STHeiti,Tahoma,Helvetica;
 a{
 	color:#ff0084;
 }
-
+h2{
+	font-size:22px;
+	font-weight:bold;
+}
 .header{
   position:absolute;
   top:0;
@@ -57,6 +60,12 @@ a{
 	padding-bottom: 5px;
 }
 .hdp_container ul,.hdp_container ul li{text-intent:0;}
+
+#top_user_info{
+	float:right;
+	margin-right:20px;
+}
+
 /* alert message */
 div.alert{
 	margin-top:10px;

@@ -37,6 +37,11 @@
     <servlet-name>AysncAlbum</servlet-name>
     <servlet-class>com.raysmond.album.AysncAlbum</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AdminUser</servlet-name>
+    <servlet-class>com.raysmond.user.AdminUser</servlet-class>
+  </servlet>
+
 
   <servlet-mapping>
     <servlet-name>UserServlet</servlet-name>
@@ -70,7 +75,18 @@
     <servlet-name>AysncAlbum</servlet-name>
     <url-pattern>/AysncAlbum</url-pattern>
   </servlet-mapping>
- 
+  <servlet-mapping>
+    <servlet-name>AdminUser</servlet-name>
+    <url-pattern>/AdminUser</url-pattern>
+  </servlet-mapping>
+  <filter>
+    <filter-name>AdminLoginFilter</filter-name>
+    <filter-class>com.raysmond.user.AdminLoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AdminLoginFilter</filter-name>
+    <url-pattern>/admin/*</url-pattern>
+  </filter-mapping>
   
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
