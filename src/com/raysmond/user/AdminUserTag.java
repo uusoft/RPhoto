@@ -59,17 +59,18 @@ public class AdminUserTag extends TagSupport{
 				out.print("<div class=\"row space-bot \">");
 				out.print("<table class=\"user_table\">");	
 				int i=0,size = users.size();
+				out.print("<tbody>");
 				out.print("<tr>" 
-						+"<td>用户名</td>"
-						+"<td>邮箱</td>"
-						+"<td>注册时间</td>"
-						+"<td>最近登录时间</td>"
-						+"<td>修改 | 删除</td>"
+						+"<th class=\"text-center\">用户名</th>"
+						+"<th>邮箱</th>"
+						+"<th>注册时间</th>"
+						+"<th>最近登录时间</th>"
+						+"<th>修改 | 删除</th>"
 						+"</tr>");
 				for(;i<size;++i){
 					User user = users.get(i);
-					out.print("<tr>" 
-							+"<td>" + user.getName() + "</td>"
+					out.print("<tr "+(i%2==0?"class=\"even\"":"")+">" 
+							+"<td class=\"text-center\">" + user.getName() + "</td>"
 							+"<td>" + user.getMail() + "</td>"
 							+"<td>" + user.getCreateTime() + "</td>"
 							+"<td>" + user.getLastLoginTime() + "</td>"
@@ -77,7 +78,7 @@ public class AdminUserTag extends TagSupport{
 							+"<a href=\"AdminUser?action=delete_user&&uid="+user.getUid()+"\">删除</a></td>"
 							+"</tr>");
 				}
-				out.print("</table></div>");
+				out.print("<tbody></table></div>");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

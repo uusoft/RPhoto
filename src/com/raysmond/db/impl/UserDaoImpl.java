@@ -1,7 +1,6 @@
 package com.raysmond.db.impl;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -31,8 +30,8 @@ public class UserDaoImpl implements UserDao{
 			ps.setString(2, user.getPassword());
 			ps.setString(3, user.getMail());
 			ps.setInt(4, user.getStatus());
-			ps.setDate(5, user.getCreateTime());
-			ps.setDate(6, user.getLastLoginTime());
+			ps.setTimestamp(5, user.getCreateTime());
+			ps.setTimestamp(6, user.getLastLoginTime());
 			ps.setInt(7, user.getRid());
 			ps.setString(8, user.getPicture());
 			int userId = ps.executeUpdate();
@@ -56,14 +55,14 @@ public class UserDaoImpl implements UserDao{
 			db=new Database();
 			connect=db.getConnection();
 			PreparedStatement ps = connect.prepareStatement(
-					"UPDATE user SET name=?,password=?,mail=?,status=?,create_time=?,last_login_time=?,rid=?,picture=?) " +
+					"UPDATE user SET name=?,password=?,mail=?,status=?,create_time=?,last_login_time=?,rid=?,picture=? " +
 					" WHERE user.uid=?");
 			ps.setString(1, user.getName());
 			ps.setString(2, user.getPassword());
 			ps.setString(3, user.getMail());
 			ps.setInt(4, user.getStatus());
-			ps.setDate(5, user.getCreateTime());
-			ps.setDate(6, user.getLastLoginTime());
+			ps.setTimestamp(5, user.getCreateTime());
+			ps.setTimestamp(6, user.getLastLoginTime());
 			ps.setInt(7, user.getRid());
 			ps.setString(8, user.getPicture());
 			ps.setInt(9, user.getUid());
@@ -124,8 +123,8 @@ public class UserDaoImpl implements UserDao{
 				user.setPassword(result.getString(3));
 				user.setMail(result.getString(4));
 				user.setStatus(result.getInt(5));
-				user.setCreateTime(result.getDate(6));
-				user.setLastLoginTime(result.getDate(7));
+				user.setCreateTime(result.getTimestamp(6));
+				user.setLastLoginTime(result.getTimestamp(7));
 				user.setRid(result.getInt(8));
 				user.setPicture(result.getString(9));
 				users.add(user);
@@ -159,8 +158,8 @@ public class UserDaoImpl implements UserDao{
 				user.setPassword(result.getString(3));
 				user.setMail(result.getString(4));
 				user.setStatus(result.getInt(5));
-				user.setCreateTime(result.getDate(6));
-				user.setLastLoginTime(result.getDate(7));
+				user.setCreateTime(result.getTimestamp(6));
+				user.setLastLoginTime(result.getTimestamp(7));
 				user.setRid(result.getInt(8));
 				user.setPicture(result.getString(9));
 				users.add(user);
@@ -195,8 +194,8 @@ public class UserDaoImpl implements UserDao{
 				user.setPassword(result.getString(3));
 				user.setMail(result.getString(4));
 				user.setStatus(result.getInt(5));
-				user.setCreateTime(result.getDate(6));
-				user.setLastLoginTime(result.getDate(7));
+				user.setCreateTime(result.getTimestamp(6));
+				user.setLastLoginTime(result.getTimestamp(7));
 				user.setRid(result.getInt(8));
 				user.setPicture(result.getString(9));
 				users.add(user);
@@ -246,8 +245,8 @@ public class UserDaoImpl implements UserDao{
 				user.setPassword(result.getString(3));
 				user.setMail(result.getString(4));
 				user.setStatus(result.getInt(5));
-				user.setCreateTime(result.getDate(6));
-				user.setLastLoginTime(result.getDate(7));
+				user.setCreateTime(result.getTimestamp(6));
+				user.setLastLoginTime(result.getTimestamp(7));
 				user.setRid(result.getInt(8));
 				user.setPicture(result.getString(9));
 			}
@@ -261,5 +260,26 @@ public class UserDaoImpl implements UserDao{
 		return user;
 	}
 
+	@Override
+	public int getCount() {
+		int count = 0;
+		try {
+			db=new Database();
+			connect=db.getConnection();
+			PreparedStatement ps = connect.prepareStatement(
+					"SELECT COUNT(uid) AS countall FROM user");
+			ResultSet result = ps.executeQuery();
+			if(result.first()){
+				count = result.getInt("countall");
+			}
+			ps.close();
+			db.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
+	}
 	
 }

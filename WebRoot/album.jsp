@@ -45,7 +45,7 @@
 <html>
   <head>
     <base href="<%=basePath%>">
-    <title>My JSP 'album.jsp' starting page</title>
+    <title>专辑</title>
 	<link rel="stylesheet" type="text/css" href="styles/IVORY-master/css/ivory.css">
 	<link rel="stylesheet" type="text/css" href="styles/jquery-ui/jquery-ui-1.10.2.custom.min.css">
 	<link rel="stylesheet" type="text/css" href="styles/style.css">
@@ -76,6 +76,7 @@
 		<li><a class="yahei" href="./index.jsp">首页</a></li>
 		<li><a class="yahei" href="./album.jsp">我的专辑</a></li>
 		<li><a class="yahei" href="./public.jsp">公开分享</a></li>
+		<li><a class="yahei" href="./about.jsp">关于RPhoto</a></li>
 	  </ul>		
 	  <div style="float:right;margin-right:20px;" id="top_user_info">
 		  <user:userInfo userId="<%=userId %>" />

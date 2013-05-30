@@ -43,6 +43,7 @@ public class PhotoDaoImpl implements PhotoDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		new AlbumDaoImpl().updateAlbumPhotoCount(photo.getAid());
 		return photo.getPid();
 	}
 
@@ -55,7 +56,7 @@ public class PhotoDaoImpl implements PhotoDao{
 			db=new Database();
 			connect=db.getConnection();
 			PreparedStatement ps = connect.prepareStatement(
-					"UPDATE photo SET name=?,type=?,uri=?,size=?,create_time=?,album_aid=?,views=?) " +
+					"UPDATE photo SET name=?,type=?,uri=?,size=?,create_time=?,album_aid=?,views=? " +
 					" WHERE pid=?");
 			ps.setString(1, photo.getName());
 			ps.setString(2, photo.getType());
@@ -217,6 +218,28 @@ public class PhotoDaoImpl implements PhotoDao{
 		}
 		if(result==0) return false;
 		return true;
+	}
+
+	@Override
+	public int getCount() {
+		int count = 0;
+		try {
+			db=new Database();
+			connect=db.getConnection();
+			PreparedStatement ps = connect.prepareStatement(
+					"SELECT COUNT(pid) AS countall FROM photo");
+			ResultSet result = ps.executeQuery();
+			if(result.first()){
+				count = result.getInt("countall");
+			}
+			ps.close();
+			db.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
 	}
 
 }

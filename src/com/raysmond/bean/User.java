@@ -1,6 +1,7 @@
 package com.raysmond.bean;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 public class User {
 	private int uid;
@@ -8,8 +9,8 @@ public class User {
 	private String password;
 	private String mail;
 	private int status; //0: blocked, 1:active
-	private Date createTime;
-	private Date lastLoginTime;
+	private Timestamp createTime;
+	private Timestamp lastLoginTime;
 	private int rid;
 	private String picture;
 	
@@ -57,19 +58,19 @@ public class User {
 		this.status = status;
 	}
 
-	public Date getCreateTime() {
+	public Timestamp getCreateTime() {
 		return createTime;
 	}
 
-	public void setCreateTime(Date createTime) {
+	public void setCreateTime(Timestamp createTime) {
 		this.createTime = createTime;
 	}
 
-	public Date getLastLoginTime() {
+	public Timestamp getLastLoginTime() {
 		return lastLoginTime;
 	}
 
-	public void setLastLoginTime(Date lastLoginTime) {
+	public void setLastLoginTime(Timestamp lastLoginTime) {
 		this.lastLoginTime = lastLoginTime;
 	}
 

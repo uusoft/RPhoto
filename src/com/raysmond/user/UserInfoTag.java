@@ -44,7 +44,7 @@ public class UserInfoTag extends TagSupport{
 			buffer.append("<div class=\"user_info_wrapper\">");
 			buffer.append("<img src=\""+user.getPicture() +"\"  />");
 			buffer.append("<div class=\"username\">"
-					+ user.getName()
+					+ "<a href=\"user.jsp?uid="+user.getUid()+"\">" + user.getName() +"</a>"
 					+ "<a class=\"link\" href=\"userAuth?action=logout\">ÍË³ö</a>"
 					+ "</div>");
 			buffer.append("</div>");

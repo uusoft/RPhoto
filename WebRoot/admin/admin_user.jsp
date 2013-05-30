@@ -27,6 +27,12 @@
 	  <ul class="top_nav" style="float:left;">
 		<li><a class="yahei" href="./index.jsp">首页</a></li>
 		<li><a class="yahei" href="./album.jsp">我的专辑</a></li>
+		<li><a class="yahei" href="./public.jsp">公开分享</a></li>
+		<li><a class="yahei" href="./about.jsp">关于RPhoto</a></li>
+		<li><a class="yahei" href="./admin/index.jsp">管理页</a></li>
+		<li><a class="yahei" href="./admin/admin_user.jsp">用户管理</a></li>
+		<li><a class="yahei" href="./admin/admin_album.jsp">专辑管理</a></li>
+		<li><a class="yahei" href="./admin/statistics.jsp">统计</a></li>
 	  </ul>		
 	  </div>		
   </div>
@@ -51,22 +57,22 @@
 		</div>
 	</div>
 <script>
-			function toolbar(el){
-                el = typeof el == 'string' ? document.getElementById(el) : el;
-                var elTop = el.offsetTop;
-                var sTop = 0;
-                window.onscroll = function(){
-                    sTop = document.body.scrollTop || document.documentElement.scrollTop;
-                    if( sTop > elTop ){
-                        el.style.position="fixed";
-                        el.style.top = 0 + 'px';
-                    }else{
-                        el.style.position="absolute";
-                        el.style.top = elTop + 'px';
-                    }
-                };
-            }
-            toolbar('header');            
+	function toolbar(el){
+              el = typeof el == 'string' ? document.getElementById(el) : el;
+              var elTop = el.offsetTop;
+              var sTop = 0;
+              window.onscroll = function(){
+                  sTop = document.body.scrollTop || document.documentElement.scrollTop;
+                  if( sTop > elTop ){
+                      el.style.position="fixed";
+                      el.style.top = 0 + 'px';
+                  }else{
+                      el.style.position="absolute";
+                      el.style.top = elTop + 'px';
+                  }
+              };
+          }
+          toolbar('header');            
 </script>
   </body>
 </html>

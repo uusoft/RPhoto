@@ -35,6 +35,7 @@ public class PicturesInAlbumTag extends TagSupport{
 		return SKIP_BODY;
 	}
 	
+	
 	public void getPicturesInAlbum(JspWriter out){
 		List<Photo> pictures = dao.getPhotoInAlbum(Integer.parseInt(albumId));
 		if(pictures==null||pictures.size()==0){
@@ -45,6 +46,13 @@ public class PicturesInAlbumTag extends TagSupport{
 			}
 			return;
 		}
+		Album album = new AlbumDaoImpl().getAlbumById(Integer.parseInt(albumId));
+		User user = (User)pageContext.getSession().getAttribute("AUTH_USER");
+		boolean isCurrentUser = false;
+		//System.out.println(user.getUid());
+		if(user!=null&&user.getUid()==album.getUid()){
+			isCurrentUser = true;
+		}
 		StringBuffer buffer = new StringBuffer(1024);
 		buffer.append("<div class=\"row space-bot\">");
 		int i=0,size = pictures.size();
@@ -52,10 +60,12 @@ public class PicturesInAlbumTag extends TagSupport{
 		for(;i<size;++i){
 			Photo photo = pictures.get(i);
 			buffer.append("<div class=\"c3\" style=\"padding-left:5px;padding-right:5px;margin-bottom:15px;\">" +
-					"<p style=\"padding:10px;\" class=\"note\"><img src=\""+photo.getUri()
+					"<div style=\"line-height:160%;padding:10px;font-size:14px;\" class=\"note\">" +
+					"<img src=\""+photo.getUri()
 					+"\" style=\"width:225px;height:210px;margin-bottom:10px;\" /><br/>"
-					+photo.getName()
-					+"</p></div>");
+					+ "<div style=\"word-break:break-all;max-width:225px;\">" +photo.getName() + "</div>"
+					+ ((isCurrentUser)?getAdminHTML(photo):"") 
+					+"</div></div>");
 		}
 		buffer.append("</div>");
 		try {
@@ -63,5 +73,11 @@ public class PicturesInAlbumTag extends TagSupport{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public String getAdminHTML(Photo photo){
+		String html =  "<a style=\"float:right;position:absolute;right:25px;top:195px;\" " +
+				" href=\"javascript:editPhotoName("+photo.getPid()+",\'"+photo.getName()+"\')\">±à¼­</a>";
+		return html;
 	}
 }

@@ -87,7 +87,7 @@ public class UserAlbumTag extends TagSupport{
 		StringBuffer html = new StringBuffer(255);
 		html.append("<div class=\"album_admin_link\" id=\"admin_album_"+album.getAid()+"\">");
 		html.append("<a href=\"javascript:editAlbum("+album.getAid()+",\'"
-				+album.getName()+"\')\">±à¼­ </a><a href=\"javascript:deleteAlbum("+album.getAid()+")\"> É¾³ý</a>");
+				+album.getName()+"\')\">±à¼­ </a><a href=\"AdminAlbum?action=delete_album&&aid="+album.getAid()+"\"> É¾³ý</a>");
 		html.append("</div>");
 		return html.toString();
 	}

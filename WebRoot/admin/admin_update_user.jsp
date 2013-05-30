@@ -30,6 +30,12 @@ pageEncoding="GBK"%>
 	  <ul class="top_nav" style="float:left;">
 		<li><a class="yahei" href="./index.jsp">首页</a></li>
 		<li><a class="yahei" href="./album.jsp">我的专辑</a></li>
+		<li><a class="yahei" href="./public.jsp">公开分享</a></li>
+		<li><a class="yahei" href="./about.jsp">关于RPhoto</a></li>
+		<li><a class="yahei" href="./admin/index.jsp">管理页</a></li>
+		<li><a class="yahei" href="./admin/admin_user.jsp">用户管理</a></li>
+		<li><a class="yahei" href="./admin/admin_album.jsp">专辑管理</a></li>
+		<li><a class="yahei" href="./admin/statistics.jsp">统计</a></li>
 	  </ul>		
 	  </div>		
   </div>
@@ -58,9 +64,9 @@ pageEncoding="GBK"%>
 					 <label>邮箱</label>
 					 <input type="text" name="mail" value="<%=user.getMail() %>" />
 					 <label>密码</label>
-					 <input type="text" name="password"  />
+					 <input type="password" name="password"  />
 					 <label>密码确认</label>
-					 <input type="text" name="password_confirm" />
+					 <input type="password" name="password_confirm" />
 					 <label>权限</label>
 					 <select name="role">
 					 <option <%=(user.getRid()==1?"selected":"") %> value="1">管理员</option>

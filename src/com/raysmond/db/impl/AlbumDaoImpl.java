@@ -338,14 +338,15 @@ public class AlbumDaoImpl implements AlbumDao{
 
 	@Override
 	public int getCount() {
+		int count = 0;
 		try {
 			db=new Database();
 			connect=db.getConnection();
 			PreparedStatement ps = connect.prepareStatement(
-					"SELECT count(aid) AS count FROM album");
-			ResultSet results = ps.executeQuery();
-			if(results.next()){
-				return results.getInt("count");
+					"SELECT COUNT(aid) AS countall FROM album");
+			ResultSet result = ps.executeQuery();
+			if(result.first()){
+				count = result.getInt("countall");
 			}
 			ps.close();
 			db.close();
@@ -354,13 +355,13 @@ public class AlbumDaoImpl implements AlbumDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return 0;
+		return count;
 	}
 
 	@Override
 	public List<Album> getPublicAlbums(int page, int pageSize, String name) {
-		int begin = page * pageSize + 1;
-		int end = begin + pageSize -1;
+		int begin = page * pageSize;
+		int end = begin + pageSize;
 		List<Album> albums = new ArrayList<Album>();
 		try {
 			db=new Database();
@@ -392,5 +393,68 @@ public class AlbumDaoImpl implements AlbumDao{
 			e.printStackTrace();
 		}
 		return albums;
+	}
+
+	@Override
+	public List<Album> getAllAlbums(int page, int pageSize) {
+		int begin = page * pageSize;
+		int end = begin + pageSize;
+		List<Album> albums = new ArrayList<Album>();
+		try {
+			db=new Database();
+			connect=db.getConnection();
+			PreparedStatement ps = connect.prepareStatement(
+					"SELECT * FROM album AS album,user AS user WHERE album.uid=user.uid ORDER BY album.aid DESC LIMIT ?,?");
+			ps.setInt(1, begin);
+			ps.setInt(2, end);
+			System.out.println(ps.toString());
+			ResultSet results = ps.executeQuery();
+			while(results.next()){
+				Album album = new Album();
+				album.setAid(results.getInt("album.aid"));
+				album.setName(results.getString("album.name"));
+				album.setUid(results.getInt("album.uid"));
+				album.setCreateTime(results.getTimestamp("album.create_time"));
+				album.setUpdateTime(results.getTimestamp("album.update_time"));
+				album.setIspublic(results.getInt("album.ispublic"));
+				album.setCount(results.getInt("album.count"));
+				album.setCoverUri(results.getString("album.cover_uri"));
+				album.getUser().setUid(results.getInt("user.uid"));
+				album.getUser().setName(results.getString("user.name"));
+				albums.add(album);
+			}
+			ps.close();
+			db.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return albums;
+	}
+
+	@Override
+	public void updateAlbumPhotoCount(int albumId) {
+		try {
+			db=new Database();
+			connect=db.getConnection();
+			PreparedStatement ps0 = connect.prepareStatement("select count(*) cnt from photo where album_aid=?");
+			ps0.setInt(1, albumId);
+			ResultSet result = ps0.executeQuery();
+			if(result.first()){
+				PreparedStatement ps = connect.prepareStatement(
+						"update album set count=? WHERE aid=?");
+				ps.setInt(1, result.getInt("cnt"));
+				ps.setInt(2, albumId);
+				ps.executeUpdate();
+				ps.close();
+			}
+			ps0.close();
+			db.close();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

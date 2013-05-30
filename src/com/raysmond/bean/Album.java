@@ -12,7 +12,7 @@ public class Album {
 	private int ispublic;
 	private int count;
 	private String coverUri;
-	private User user;
+	private User user = new User();
 
 	public void setUser(User user){
 		this.user = user;

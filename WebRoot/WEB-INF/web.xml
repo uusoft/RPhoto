@@ -18,6 +18,10 @@
     <servlet-class>com.raysmond.album.ManageAlbum</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>AdminUpdateAlbum</servlet-name>
+    <servlet-class>com.raysmond.admin.AdminUpdateAlbum</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>UploadPhotos</servlet-name>
     <servlet-class>com.raysmond.upload.UploadPhotos</servlet-class>
   </servlet>
@@ -41,6 +45,21 @@
     <servlet-name>AdminUser</servlet-name>
     <servlet-class>com.raysmond.user.AdminUser</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AdminAlbum</servlet-name>
+    <servlet-class>com.raysmond.admin.AdminAlbum</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>UpdateUser</servlet-name>
+    <servlet-class>com.raysmond.user.UpdateUser</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>AsyncPhoto</servlet-name>
+    <servlet-class>com.raysmond.picture.AsyncPhoto</servlet-class>
+  </servlet>
+
+
+
 
 
   <servlet-mapping>
@@ -78,6 +97,22 @@
   <servlet-mapping>
     <servlet-name>AdminUser</servlet-name>
     <url-pattern>/AdminUser</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdminAlbum</servlet-name>
+    <url-pattern>/AdminAlbum</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>AdminUpdateAlbum</servlet-name>
+    <url-pattern>/AdminUpdateAlbum</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateUser</servlet-name>
+    <url-pattern>/UpdateUser</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AsyncPhoto</servlet-name>
+    <url-pattern>/AsyncPhoto</url-pattern>
   </servlet-mapping>
   <filter>
     <filter-name>AdminLoginFilter</filter-name>

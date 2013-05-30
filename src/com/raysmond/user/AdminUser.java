@@ -1,5 +1,6 @@
 package com.raysmond.user;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Iterator;
@@ -61,19 +62,41 @@ public class AdminUser extends HttpServlet {
 			return;
 		}
 		int uid = Integer.parseInt(userId);
+		String savePath = this.getServletConfig().getServletContext()
+                .getRealPath("");
 		AlbumDao albumDao = new AlbumDaoImpl();
 		PhotoDao photoDao = new PhotoDaoImpl();
 		List<Album> albums = albumDao.getUserAlbums(uid);
 		Iterator<Album> it = albums.iterator();
 		while(it.hasNext()){
 			Album album = it.next();
+			List<Photo> photos = photoDao.getPhotoInAlbum(album.getAid());
+			Iterator<Photo> it1 = photos.iterator();
+			while(it1.hasNext()){
+				Photo p = it1.next();
+				String filePath = savePath + "/" + p.getUri();
+				File file = new File(filePath);
+				if(file.exists()){
+					file.delete();
+				}
+			}
 			photoDao.deletePhotosInAlbum(album.getAid());
 			albumDao.delete(album);
+			String filePath = savePath + "/" + album.getCoverUri();
+			File file = new File(filePath);
+			if(file.exists()){
+				file.delete();
+			}
 		}
 		UserDao dao = new UserDaoImpl();
 		User user = new User();
 		user.setUid(uid);
 		dao.delete(user);
+		String filePath = savePath + "/" + user.getPicture();
+		File file = new File(filePath);
+		if(file.exists()){
+			file.delete();
+		}
 		response.sendRedirect(request.getContextPath()+"/admin/admin_user.jsp");
 	}
 }

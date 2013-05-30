@@ -144,11 +144,11 @@ public class ManageAlbum extends HttpServlet {
 	     int insertId = dao.insert(album);
 	     String path = request.getContextPath();
 	     if(insertId>0){
-	    	 String msg = new String(("&&message=专辑\""+album.getName()+"\"创建成功。快上传图片吧！").getBytes("GBK"),"ISO-8859-1");
+	    	 String msg = new String(("&&message=Album \""+album.getName()+"\" was created successfully."));
 	    	 response.sendRedirect(path+"/pictures.jsp?album="+insertId+msg);
 	     }
 	     else{
-	    	 String msg = new String(("error=对不起，专辑\""+album.getName()+"\"创建失败！").getBytes("GBK"),"ISO-8859-1");
+	    	 String msg = new String(("error=Sorry. Album \""+album.getName()+"\" cannot be created."));
 	    	 response.sendRedirect(path+"/album/add_album.jsp?"+msg);
 	     }
 	     

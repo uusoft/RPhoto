@@ -40,6 +40,7 @@
 		<li><a class="yahei" href="./index.jsp">首页</a></li>
 		<li><a class="yahei" href="./album.jsp">我的专辑</a></li>
 		<li><a class="yahei" href="./public.jsp">公开分享</a></li>
+		<li><a class="yahei" href="./about.jsp">关于RPhoto</a></li>
 	  </ul>
 	  <div style="float:right;margin-right:20px;" id="top_user_info">
 		  <user:userInfo userId="" />
@@ -55,12 +56,15 @@
 				</div>
 				<div class="row space-bot" style="margin-bottom:0;">
 				<form class="hform yahei" action="public.jsp" method="get">
-				<input type="text" class="yahei" style="float:left;" name="search" placeholder="搜索专辑" />
+				<input type="text" value="<%=new String(search.getBytes("ISO-8859-1"),"GBK") %>" class="yahei" style="float:left;" name="search" placeholder="搜索专辑" />
 				<button class="small yahei" style="margin-top:0;margin-left:10px;">搜索</button>
 				</form>
 				</div>
 				<div class="row space-bot">
-					<% String showPager = "NO"; if(!search.equals(""))showPager="public.jsp"; %>
+					<%  
+					    String showPager = "NO"; 
+					    if(search.equals("")) showPager="public.jsp"; 
+				    %>
 					<rasymond:publicAlbums nameFilter="<%=search %>" showPager="<%=showPager %>" row="c3" pageSize="12" page="<%=_page %>" />
 				</div>
 				<div class="row space-bot">

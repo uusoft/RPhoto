@@ -144,6 +144,7 @@ import="com.raysmond.db.impl.AlbumDaoImpl"
 		<li><a class="yahei" href="./index.jsp">首页</a></li>
 		<li><a class="yahei" href="./album.jsp">我的专辑</a></li>
 		<li><a class="yahei" href="./public.jsp">公开分享</a></li>
+		<li><a class="yahei" href="./about.jsp">关于RPhoto</a></li>
 	  </ul>
 	  <div style="float:right;margin-right:20px;" id="top_user_info">
 		  <user:userInfo userId="<%=userId %>" />

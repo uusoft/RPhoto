@@ -3,6 +3,7 @@ package com.raysmond.user;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import com.raysmond.bean.User;
 import com.raysmond.db.dao.UserDao;
 import com.raysmond.db.impl.UserDaoImpl;
+import com.raysmond.util.DateUtil;
 
 public class UserServlet extends HttpServlet {
 
@@ -78,6 +80,8 @@ public class UserServlet extends HttpServlet {
 		if(user.getPassword().equals(password)){ 
 			//用户输入的密码和实际密码一致，登录成功
 			HttpSession session = request.getSession(true);
+			user.setLastLoginTime(DateUtil.getSystemTimestamp());
+			dao.update(user);
 			session.setAttribute("AUTH_USER", user);
 			response.sendRedirect("album.jsp?uid="+user.getUid());
 			return;
@@ -118,8 +122,9 @@ public class UserServlet extends HttpServlet {
 		user.setPicture("images/default_picture.jpg"); //使用默认头像
 		user.setStatus(1); //默认有效
 		user.setRid(1);    //默认角色为普通用户
-		user.setCreateTime(new Date(Calendar.getInstance().getTimeInMillis()));
-		user.setLastLoginTime(new Date(0));
+		Timestamp currentTime = DateUtil.getSystemTimestamp();
+		user.setCreateTime(currentTime);
+		user.setLastLoginTime(new Timestamp(0));
 		UserDao dao = new UserDaoImpl();
 		int userId = dao.insert(user);
 		if(userId>0){  //注册成功，userId为注册成功后的用户id

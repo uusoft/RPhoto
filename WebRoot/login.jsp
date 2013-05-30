@@ -25,6 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  <ul class="top_nav" style="float:left;">
 		<li><a class="yahei" href="./index.jsp">首页</a></li>
 		<li><a class="yahei" href="./public.jsp">公开分享</a></li>
+		<li><a class="yahei" href="./about.jsp">关于RPhoto</a></li>
 	  </ul>		
 	  <div style="float:right;margin-right:20px;" id="top_user_info">
 		  <user:userInfo userId="null" />
@@ -47,8 +48,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div style="background:rgba(209, 205, 205, 0.53);padding:20px;width:300px;">
 						<form id="login_form" class="hform" action="userAuth" method="post" style="margin-bottom:0;display:none;">
 						    <input type="hidden" name="action" value="login" /> <br />
-						    <input type="text" name="username" style="width:100%;height:40px;background:rgba(255, 255, 255, 0.89);" placeholder="用户名" class="yahei"/>
-						    <input type="password" name="password" style="width:100%;height:40px;background:rgba(255, 255, 255, 0.89);" placeholder="密码" class="yahei"/>
+						    <input type="text" value="Raysmond" name="username" style="width:100%;height:40px;background:rgba(255, 255, 255, 0.89);" placeholder="用户名" class="yahei"/>
+						    <input type="password" name="password" value="111111" style="width:100%;height:40px;background:rgba(255, 255, 255, 0.89);" placeholder="密码" class="yahei"/>
 						    <button type="submit" style="width:40%;font-size:14px;height:40px;" class="large yahei skyblue">登&nbsp;录</button>
 					    </form>
 						</div>
