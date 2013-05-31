@@ -11,4 +11,13 @@ public class DateUtil {
 	    Timestamp timeStamp = new Timestamp(date.getTime());
 	    return timeStamp;
 	}
+	
+	public static String getTimestampString(Timestamp time){
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+		return  sdf.format(time); 
+	}
+	
+	public static void main(String[] args){
+		System.out.print(getTimestampString(DateUtil.getSystemTimestamp()));
+	}
 }

@@ -11,6 +11,7 @@ import com.raysmond.bean.Album;
 import com.raysmond.bean.User;
 import com.raysmond.db.dao.AlbumDao;
 import com.raysmond.db.impl.AlbumDaoImpl;
+import com.raysmond.util.DateUtil;
 
 public class UserAlbumTag extends TagSupport{
 	private static final long serialVersionUID = -8099629037395242519L;
@@ -71,8 +72,8 @@ public class UserAlbumTag extends TagSupport{
 				+"<img src=\""
 				+album.getCoverUri()+"\" style=\"width:225px;height:200px;\" />" +
 				"<br/><a href=\"pictures.jsp?album="+album.getAid()+"\">"+album.getName()+"</a><br />"+
-				"<span>"+album.getCreateTime()+"</span>"+
-				"<span>&nbsp;&nbsp;"+album.getCount()+" уе</span>"+
+				"<span class=\"gray_small\">"+DateUtil.getTimestampString(album.getCreateTime())+"</span>"+
+				"<span class=\"gray_small\">&nbsp;&nbsp;"+album.getCount()+" уе</span>"+
 				(isLoginUser()?addAdminHtml(album):"") +
 				"</div>" +
 				"</div>");

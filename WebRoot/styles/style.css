@@ -185,6 +185,7 @@ font-family: Microsoft YaHei; color:#000; font-weight:bold; text-decoration:none
 
 .album_admin_link{
 	position:absolute;
-	right:25px;
-	top:15px;
+	right:17px;
+	bottom:20px;
+	font-size:12px;
 }

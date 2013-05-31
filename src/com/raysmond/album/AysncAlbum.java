@@ -13,6 +13,7 @@ import com.raysmond.bean.Album;
 import com.raysmond.bean.User;
 import com.raysmond.db.dao.AlbumDao;
 import com.raysmond.db.impl.AlbumDaoImpl;
+import com.raysmond.util.DateUtil;
 
 public class AysncAlbum extends HttpServlet {
 
@@ -109,7 +110,7 @@ public class AysncAlbum extends HttpServlet {
 			System.out.println(album.getName()+" by user: "+ album.getUser().getName());
 			out.println("<a href=\"user.jsp?uid="+album.getUser().getUid()+"\">"+album.getUser().getName()+"</a><br />");
 			out.println("专辑名：<a href=\"pictures.jsp?album="+album.getAid()+"\">"+album.getName()+"</a><br />");
-			out.println("<span class=\"gray_small\">创建时间："+album.getCreateTime()+"</span>");
+			out.println("<span class=\"gray_small\">创建时间："+DateUtil.getTimestampString(album.getCreateTime())+"</span>");
 		}
 	}
 

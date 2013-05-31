@@ -86,6 +86,7 @@ public class UserTagControll extends HttpServlet {
 	public void doGetTagList(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
+		String path = request.getContextPath();
 		String photoId = request.getParameter("photo_id");
 		System.out.println("get tag list of photo: "+photoId);
 		if(photoId==null||photoId.equals("")){
@@ -105,7 +106,7 @@ public class UserTagControll extends HttpServlet {
 		Iterator<Tag> iter = tags.iterator();
 		while(iter.hasNext()){
 			Tag tag = iter.next();
-			out.print("<a class=\"tag-item\" href=\"#\">"+tag.getName()+"</a>");
+			out.print("<a class=\"tag-item\" href=\""+path+"/tag.jsp?tag="+tag.getName()+"\">"+tag.getName()+"</a>");
 		}
 		out.flush();
 		out.close();

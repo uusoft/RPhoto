@@ -9,6 +9,7 @@ import javax.servlet.jsp.tagext.TagSupport;
 import com.raysmond.bean.Album;
 import com.raysmond.db.dao.AlbumDao;
 import com.raysmond.db.impl.AlbumDaoImpl;
+import com.raysmond.util.DateUtil;
 
 public class PublicAlbumsTag extends TagSupport{
 	private static final long serialVersionUID = -851366690263024331L;
@@ -86,7 +87,7 @@ public class PublicAlbumsTag extends TagSupport{
 				+"<img src=\""
 				+album.getCoverUri()+"\" style=\"width:100%;height:160px;\" />" +
 				"<br/><a href=\"pictures.jsp?album="+album.getAid()+"\">"+album.getName()+"</a><br />"+
-				"<span>"+album.getCreateTime()+"</span>"+
+				"<span>"+DateUtil.getTimestampString(album.getCreateTime())+"</span>"+
 				"<span>&nbsp;&nbsp;"+album.getCount()+" уе</span>"+
 				"</p></div>");
 			}

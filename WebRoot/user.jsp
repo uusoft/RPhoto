@@ -1,4 +1,7 @@
-<%@ page language="java" import="java.util.*" import="com.raysmond.bean.User" pageEncoding="GBK"%>
+<%@ page language="java" import="java.util.*"
+ import="com.raysmond.bean.User" 
+ import="com.raysmond.util.DateUtil"
+ pageEncoding="GBK"%>
 <%@ taglib uri="/WEB-INF/public_albums.tld" prefix="rasymond"%>
 <%@ taglib uri="/WEB-INF/user_info.tld" prefix="user"%>
 <%@ taglib uri="/WEB-INF/top_comments.tld" prefix="comment"%>
@@ -49,8 +52,8 @@
 					    <img src="<%=user.getPicture() %>" style="width:200px;height:200px;float:left;margin-right:20px;" />
 						用户名：<%=user.getName() %><br/>
 						邮箱：<%=user.getMail() %><br/>
-						注册时间：<%=user.getCreateTime() %>  <br/>
-						登录时间：<%=user.getLastLoginTime() %> <br/>
+						注册时间：<%=DateUtil.getTimestampString(user.getCreateTime()) %>  <br/>
+						登录时间：<%=DateUtil.getTimestampString(user.getLastLoginTime()) %> <br/>
 						<button onclick="window.location.href='update_user.jsp'">更新我的信息</button>
 					</div>
 				</div>
