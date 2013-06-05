@@ -66,6 +66,9 @@ public class PicturesInAlbumTag extends TagSupport{
 					+ "<div style=\"word-break:break-all;max-width:225px;\">" +photo.getName() + "</div>"
 					+ ((isCurrentUser)?getAdminHTML(photo):"") 
 					+"</div></div>");
+			if((i+1)%4==0){
+				buffer.append("<div style=\"clear:both;\"></div>");
+			}
 		}
 		buffer.append("</div>");
 		try {
@@ -76,8 +79,11 @@ public class PicturesInAlbumTag extends TagSupport{
 	}
 	
 	public String getAdminHTML(Photo photo){
-		String html =  "<a style=\"float:right;position:absolute;right:25px;top:195px;\" " +
-				" href=\"javascript:editPhotoName("+photo.getPid()+",\'"+photo.getName()+"\')\">±à¼­</a>";
-		return html;
+		StringBuffer html = new StringBuffer();  
+		html.append("<a style=\"float:right;position:absolute;right:55px;top:195px;\" " +
+				" href=\"javascript:editPhotoName("+photo.getPid()+",\'"+photo.getName()+"\')\">±à¼­</a>");
+		html.append("<a style=\"float:right;position:absolute;right:20px;top:195px;\" " +
+				" href=\"javascript:deletePhotoInAlbum("+photo.getPid()+")\">É¾³ý</a>");
+		return html.toString();
 	}
 }

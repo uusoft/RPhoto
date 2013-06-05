@@ -2,6 +2,8 @@ package com.raysmond.bean;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Photo {
 	private int pid;
@@ -12,7 +14,16 @@ public class Photo {
 	private Timestamp createTime;
 	private int aid;
 	private int views;
+	private List<Tag> tags = new ArrayList<Tag>();
 	
+	public List<Tag> getTags() {
+		return tags;
+	}
+
+	public void setTags(List<Tag> tags) {
+		this.tags = tags;
+	}
+
 	public Photo(){
 		
 	}

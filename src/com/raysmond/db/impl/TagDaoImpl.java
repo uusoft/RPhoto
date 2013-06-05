@@ -145,20 +145,25 @@ public class TagDaoImpl implements TagDao {
 	}
 
 	@Override
-	public List<Tag> getAllTags(int count) {
+	public List<Tag> getAllTags(int count,boolean hasPhoto) {
 		List<Tag> tags = new ArrayList<Tag>();
 		try {
 			db=new Database();
 			connect=db.getConnection();
-			PreparedStatement ps = connect.prepareStatement(
-					"SELECT * FROM tag ORDER BY tid DESC LIMIT ?");
-			System.out.println(count);
+			String sql = "";
+			if(!hasPhoto)sql = "SELECT * FROM tag ORDER BY tid DESC LIMIT ?";
+			else sql = "SELECT * FROM tag,photo_has_tag,photo,album" +
+					" WHERE photo_has_tag.tag_tid=tag.tid" +
+					" AND photo_has_tag.photo_pid=photo.pid" +
+					" AND photo.album_aid=album.aid ORDER BY tid DESC LIMIT ?";
+			PreparedStatement ps = connect.prepareStatement(sql);
+			System.out.println(sql);
 			ps.setInt(1, count);
 			ResultSet results = ps.executeQuery();
 			while(results.next()){
 				Tag tag = new Tag();
-				tag.setTid(results.getInt("tid"));
-				tag.setName(results.getString("name"));
+				tag.setTid(results.getInt("tag.tid"));
+				tag.setName(results.getString("tag.name"));
 				tags.add(tag);
 			}
 			ps.close();

@@ -7,6 +7,7 @@ import="com.raysmond.db.impl.AlbumDaoImpl"
 <%@ taglib uri="/WEB-INF/user_info.tld" prefix="user"%>
 <%@ taglib uri="/WEB-INF/photos_with_tag.tld" prefix="photos"%>
 <%
+	request.setCharacterEncoding("GBK");
 	String path = request.getContextPath();
 	String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 	User user = (User) session.getAttribute("AUTH_USER");
@@ -49,6 +50,7 @@ import="com.raysmond.db.impl.AlbumDaoImpl"
 						<jsp:include page="./message.jsp"></jsp:include>
 				</div>
 				<div class="row space-bot">
+					<% tag = new String(tag.getBytes("ISO-8859-1"),"GBK"); %>
 					<photos:photosWithTag tag="<%=tag %>" />
 				</div>
 			</div>

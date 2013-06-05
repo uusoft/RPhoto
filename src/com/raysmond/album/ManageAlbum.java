@@ -55,6 +55,7 @@ public class ManageAlbum extends HttpServlet {
     		return;
     	}
     	  request.setCharacterEncoding("GBK");
+    	  //response.setContentType("text/html;charset:gbk;");
 		  String albumName = request.getParameter("album_name");
 		  System.out.println(albumName);
 		  String uri = "";
@@ -144,11 +145,11 @@ public class ManageAlbum extends HttpServlet {
 	     int insertId = dao.insert(album);
 	     String path = request.getContextPath();
 	     if(insertId>0){
-	    	 String msg = new String(("&&message=Album \""+album.getName()+"\" was created successfully."));
+	    	 String msg = new String(("&&message=Album \""+new String(album.getName().getBytes(),"iso-8859-1")+"\" was created successfully."));
 	    	 response.sendRedirect(path+"/pictures.jsp?album="+insertId+msg);
 	     }
 	     else{
-	    	 String msg = new String(("error=Sorry. Album \""+album.getName()+"\" cannot be created."));
+	    	 String msg = new String(("error=Sorry. Album \""+new String(album.getName().getBytes(),"iso-8859-1")+"\" cannot be created."));
 	    	 response.sendRedirect(path+"/album/add_album.jsp?"+msg);
 	     }
 	     

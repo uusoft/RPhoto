@@ -58,6 +58,17 @@ import="com.raysmond.db.impl.AlbumDaoImpl"
 				$("#_photo_id").val(_pid);
 				$( "#dialog-form" ).dialog( "open" );
             }
+     function deletePhotoInAlbumCallBack(response){
+			 	alert(response);
+			 	window.location.reload();
+			 	}
+     function deletePhotoInAlbum(_pid){
+     	//alert(_pid);
+     	ayncRPhoto("AsyncPhoto",
+     				"action=delete_photo&&_photo_id=" +_pid,
+			       deletePhotoInAlbumCallBack);
+     }
+    
 	</script>
   </head>
   <body>
