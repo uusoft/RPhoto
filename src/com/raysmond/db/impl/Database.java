@@ -26,4 +26,5 @@ public class Database {
 	public void close() throws SQLException{
 		connect.close();
 	}
+	
 }

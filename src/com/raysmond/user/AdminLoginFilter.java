@@ -50,12 +50,10 @@ public class AdminLoginFilter implements Filter {
         User user = (User) session.getAttribute("AUTH_USER");
        // System.out.println(user);
         if(user==null){
-        	String msg = new String("对不起，请先登录！".getBytes(),"ISO-8859-1");
-        	res.sendRedirect(req.getContextPath() + "/login.jsp?error="+msg);
+        	res.sendRedirect(req.getContextPath() + "/login.jsp?error=Please login first");
         }
         else if(user.getRid()!=1){ //not admin
-        	String msg = new String("对不起，你请求的页面需要管理员权限！".getBytes(),"ISO-8859-1");
-        	res.sendRedirect(req.getContextPath() + "/index.jsp?error="+msg);
+        	res.sendRedirect(req.getContextPath() + "/index.jsp?error=Sorry. You don't have the right to access this page.");
         }
         else{
         	// pass the request along the filter chain

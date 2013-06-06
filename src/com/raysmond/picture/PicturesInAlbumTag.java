@@ -55,6 +55,7 @@ public class PicturesInAlbumTag extends TagSupport{
 		}
 		StringBuffer buffer = new StringBuffer(1024);
 		buffer.append("<div class=\"row space-bot\">");
+		buffer.append("<h3>"+album.getName()+"</h3>");
 		int i=0,size = pictures.size();
 		buffer.append("<div style=\"clear:both;\"></div>");
 		for(;i<size;++i){

@@ -43,7 +43,7 @@ import="com.raysmond.db.impl.AlbumDaoImpl"
 <html>
   <head>
     <base href="<%=basePath%>">
-    <title>My JSP 'album.jsp' starting page</title>
+    <title>²é¿´×¨¼­ÕÕÆ¬</title>
 	<link rel="stylesheet" type="text/css" href="styles/IVORY-master/css/ivory.css">
 	<link rel="stylesheet" type="text/css" href="styles/jquery-ui/jquery-ui-1.10.2.custom.min.css">
 	<link rel="stylesheet" type="text/css" href="styles/style.css">

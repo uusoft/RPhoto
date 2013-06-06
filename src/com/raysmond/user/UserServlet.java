@@ -63,7 +63,7 @@ public class UserServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		if(username==null||username.equalsIgnoreCase("")||
 				password==null||password.equalsIgnoreCase("")){
-			String des = "login.jsp?error=用户名和密码不能为空！";
+			String des = "login.jsp?error=User name and password cannot be blank.";
 			des = new String(des.getBytes("GBK"),"ISO-8859-1");
 			response.sendRedirect(des);
 			return;
@@ -71,7 +71,7 @@ public class UserServlet extends HttpServlet {
 		UserDao dao = new UserDaoImpl();
 		List<User> users = dao.find("name", username);
 		if(users==null||users.size()==0){
-			String des = "login.jsp?error=该用户不存在！";
+			String des = "login.jsp?error=User not exists.";
 			des = new String(des.getBytes("GBK"),"ISO-8859-1");
 			response.sendRedirect(des);
 			return;
@@ -87,7 +87,7 @@ public class UserServlet extends HttpServlet {
 			return;
 		}
 		else{
-			String des = "login.jsp?error=密码错误！";
+			String des = "login.jsp?error=Password error!";
 			des = new String(des.getBytes("GBK"),"ISO-8859-1");
 			response.sendRedirect(des);
 			return;
@@ -104,7 +104,7 @@ public class UserServlet extends HttpServlet {
 				password==null||password.equalsIgnoreCase("")||
 				email==null||email.equals("")||
 				passwordConfirm==null||passwordConfirm.equals("")){
-			String des = "register.jsp?error=用户名和密码不能为空！";
+			String des = "register.jsp?error=Username and password cannot be blank.";
 			des = new String(des.getBytes("GBK"),"ISO-8859-1");
 			response.sendRedirect(des);
 			return;
@@ -128,13 +128,13 @@ public class UserServlet extends HttpServlet {
 		UserDao dao = new UserDaoImpl();
 		int userId = dao.insert(user);
 		if(userId>0){  //注册成功，userId为注册成功后的用户id
-			String des = "login.jsp?message=注册成功，赶快登录吧！";
+			String des = "login.jsp?message=Register successfully.";
 			des = new String(des.getBytes("GBK"),"ISO-8859-1");
 			response.sendRedirect(des);
 			return;
 		}
 		else{
-			String des = "register.jsp?error=注册失败！";
+			String des = "register.jsp?error=Register failed.";
 			des = new String(des.getBytes("GBK"),"ISO-8859-1");
 			response.sendRedirect(des);
 			return;
@@ -145,7 +145,7 @@ public class UserServlet extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
 		session.removeAttribute("AUTH_USER");
-		String des = "index.jsp?error=您已经成功登出，谢谢！";
+		String des = "index.jsp?error=You have logout successfully. Thanks!";
 		response.sendRedirect(new String(des.getBytes("GBK"),"ISO-8859-1"));
 	}
 }

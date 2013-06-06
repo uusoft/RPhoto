@@ -11,7 +11,8 @@
 	if(userId==null||userId.equals("")){
 		User user = (User)session.getAttribute("AUTH_USER");
 		if(user==null){
-			String msg = new String("ÇëÏÈµÇÂ¼£¡".getBytes(),"ISO-8859-1");
+			String msg = "Please login first.";
+			//String msg = new String("ÇëÏÈµÇÂ¼£¡".getBytes(),"ISO-8859-1");
 			response.sendRedirect("login.jsp?error="+msg);
 			return;
 		}

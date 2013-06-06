@@ -65,7 +65,7 @@
 					    String showPager = "NO"; 
 					    if(search.equals("")) showPager="public.jsp"; 
 				    %>
-					<rasymond:publicAlbums nameFilter="<%=search %>" showPager="<%=showPager %>" row="c3" pageSize="12" page="<%=_page %>" />
+					<rasymond:publicAlbums nameFilter="<%=search %>" showPager="<%=showPager %>" row="c3" pageSize="8" page="<%=_page %>" />
 				</div>
 				<div class="row space-bot">
 					<div id="footer">

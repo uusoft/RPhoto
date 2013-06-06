@@ -10,9 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.raysmond.bean.Album;
-import com.raysmond.bean.Photo;
-import com.raysmond.bean.User;
+import com.raysmond.bean.*;
 import com.raysmond.db.dao.AlbumDao;
 import com.raysmond.db.dao.PhotoDao;
 

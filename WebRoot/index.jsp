@@ -36,6 +36,10 @@
 				</li>
 				<li><a class="yahei" href="./about.jsp">关于RPhoto</a>
 				</li>
+				<li><a class="yahei" href="./doc/report.pdf">文档报告</a>
+				</li>
+				<li><a class="yahei" href="./admin/">后台管理</a>
+				</li>
 			</ul>
 			<div style="float:right;margin-right:20px;" id="top_user_info">
 				<user:userInfo userId="<%=userId %>" />
@@ -53,11 +57,11 @@
 					<!-- slideshow -->
 					<div class="c8 first">
 						<div class="hdp_container">
-							<a title="独留 - 那篇风景" href="pictures.jsp?album=43"><img src="images/1.jpg">
-							</a> <a title="永远的唐布拉" href="pictures.jsp?album=29"><img src="images/2.jpg">
-							</a> <a title="黄昏地平线" href="pictures.jsp?album=28"><img src="images/3.jpg">
-							</a> <a title="Test album 1" href="pictures.jsp?album=33"><img src="images/4.jpg">
-							</a> <a title="迷失在城市夜灯下的天使" href="pictures.jsp?album=44"><img src="images/5.jpg">
+							<a title="独留 - 那篇风景" href="pictures.jsp?album=51"><img src="images/1.jpg">
+							</a> <a title="永远的唐布拉" href="pictures.jsp?album=55"><img src="images/2.jpg">
+							</a> <a title="黄昏地平线" href="pictures.jsp?album=53"><img src="images/3.jpg">
+							</a> <a title="环球风景系列" href="pictures.jsp?album=52"><img src="images/4.jpg">
+							</a> <a title="迷失在城市夜灯下的天使" href="pictures.jsp?album=56"><img src="images/5.jpg">
 							</a>
 						</div>
 						<h3 style="font-size:18px;font-weight:bold;">最近图片</h3>
