@@ -1,0 +1,8 @@
+Default database settings
+-------------------------------
+Database: MySQL5
+Database name: je1024065
+Database user: je1024065
+Password: 213171
+-------------------------------
+You can change the database settings as you need. Please remember to import the je1024065.sql to database.
